@@ -1,0 +1,13 @@
+#container {
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    background-color: transparent;
+    left: 50%;
+    margin-left: -175px;
+    top: 50%;
+    margin-top: -200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
