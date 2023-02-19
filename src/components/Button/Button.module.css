@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27');
-
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@200&display=swap');
 .button { 
     width: 100%;
     background: #a4ffaf;
@@ -7,8 +6,8 @@
     border: none;
     height: 40px;
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 12px;
+    font-weight: 900;
+    font-size: 15px;
     cursor: pointer;
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Antonio', sans-serif;
 }

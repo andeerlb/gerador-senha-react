@@ -3,15 +3,24 @@ import { faRuler } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Checkbox from "../Checkbox/Checkbox";
 import Button from "../Button/Button";
+import { useState } from "react";
 
 const CharacterLength = () => {
+    const [rangeValue, setRangeValue] = useState(0)
+
+    const handleRangeValue = (e) =>{
+        setRangeValue(e.target.value);
+    }
+    
+    
     return (
         <div className={styles.characterLengthContainer}>
             <div>
                 <span>Character Length</span>
+                <span className={`${styles['range-value']}`}> {rangeValue} </span>
                 <FontAwesomeIcon icon={faRuler} />
             </div>
-            <input type="range" name="rangeInput" min="1" max="10" />
+            <input type="range" name="rangeInput" value={rangeValue}  min="0" max="50" onChange={handleRangeValue} />
         </div>
     )
 }
@@ -21,7 +30,7 @@ const ForcaDaSenha = () => {
         <div className={styles.containerStrength}>
             <h5>STRENGTH</h5>
             <div>
-                <div className={[styles.strength, styles.strengthChecked].join(' ')}></div>
+            <div className={`${styles.strength} ${styles.strengthChecked}`}></div>
                 <div className={[styles.strength].join(' ')}></div>
                 <div className={[styles.strength].join(' ')}></div>
                 <div className={[styles.strength].join(' ')}></div>
