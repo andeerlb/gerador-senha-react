@@ -6,10 +6,15 @@ import { useContext } from 'react';
 
 const InputPassword = () => {
     const context = useContext(InputPasswordContext);
+
+    const copiar = () => {
+        navigator.clipboard.writeText(context.inputPasswordState.password);
+    }
+
     return (
         <div className={styles.containerInputPassword}>
             <input className={styles.inputPassword} placeholder={context.inputPasswordState.placeholder} value={context.inputPasswordState.password} disabled/>
-            <FontAwesomeIcon icon={faCopy} />
+            <FontAwesomeIcon icon={faCopy} onClick={copiar}/>
         </div>
     )
 }
