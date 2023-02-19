@@ -9,9 +9,6 @@
     font-weight: 900;
     font-size: 15px;
     cursor: pointer;
-<<<<<<< HEAD
-    font-family: 'Antonio', sans-serif;
-=======
     font-family: 'Bebas Neue', cursive;
     transition: .3s;
 }
@@ -19,5 +16,4 @@
 .button:hover {
     background: transparent;
     color: #a4ffaf;
->>>>>>> 82b22af8a9f95ff7636ea643047a8338b496ad42
 }

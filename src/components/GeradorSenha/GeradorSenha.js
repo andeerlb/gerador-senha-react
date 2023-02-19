@@ -30,17 +30,10 @@ const ForcaDaSenha = () => {
         <div className={styles.containerStrength}>
             <h5>STRENGTH</h5>
             <div>
-<<<<<<< HEAD
-            <div className={`${styles.strength} ${styles.strengthChecked}`}></div>
-                <div className={[styles.strength].join(' ')}></div>
-                <div className={[styles.strength].join(' ')}></div>
-                <div className={[styles.strength].join(' ')}></div>
-=======
                 <div className={[styles.strength, styles.weak].join(' ')}></div>
                 <div className={[styles.strength, styles.weak].join(' ')}></div>
                 <div className={[styles.strength, styles.medium].join(' ')}></div>
                 <div className={[styles.strength, styles.strong].join(' ')}></div>
->>>>>>> 82b22af8a9f95ff7636ea643047a8338b496ad42
             </div>
         </div>
     )
