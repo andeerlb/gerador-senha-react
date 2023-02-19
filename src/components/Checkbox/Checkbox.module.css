@@ -1,0 +1,44 @@
+.containerCheckbox {
+    display: block;
+    flex-direction: row;
+    width: 100%;
+    color: #fff;
+    height: 19px;
+    position: relative;
+}
+
+.containerCheckbox > input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 2px solid currentColor;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+.containerCheckbox > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 30px;
+    margin-top: -3px;
+}
+
+.containerCheckbox > input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+}
+
+.containerCheckbox > input[type="checkbox"]:checked::before {
+    transform: scale(1);
+    background-color: #fff;
+}

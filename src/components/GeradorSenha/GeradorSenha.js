@@ -1,6 +1,7 @@
 import styles from "./GeradorSenha.module.css";
 import { faRuler } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Checkbox from "../Checkbox/Checkbox";
 
 const CharacterLength = () => {
     return (
@@ -18,6 +19,18 @@ const GeradorSenha = () => {
     return (
         <div className={styles.containerGerador}>
             <CharacterLength />
+            <div className="m-b-15">
+                <Checkbox id="uppercase" label="Include Uppercase Letters"/>
+            </div>
+            <div className="m-b-15">
+                <Checkbox id="lowercase" label="Include Lowercase Letters"/>
+            </div>
+            <div className="m-b-15">
+                <Checkbox id="numbers" label="Include Numbers"/>
+            </div>
+            <div className="m-b-15">
+                <Checkbox id="symbols" label="Include Symbols"/>
+            </div>
         </div>
     )
 }
