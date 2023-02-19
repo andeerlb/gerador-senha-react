@@ -15,7 +15,7 @@ const CharacterLength = () => {
         <div className={styles.characterLengthContainer}>
             <div>
                 <span>Character Length</span>
-                <span className={`${styles['range-value']}`}> <p>{rangeValue}</p> </span>
+                <span className={styles['range-value']}> <p>{rangeValue}</p> </span>
             </div>
             <input type="range" name="rangeInput" value={rangeValue}  min="0" max="50" onChange={handleRangeValue} />
         </div>
