@@ -33,10 +33,11 @@ const ForcaDaSenha = () => {
         <div className={styles.containerStrength}>
             <h5>STRENGTH</h5>
             <div>
+                <span>{geradorSenhacontext.geradorSenha.forcaSenha.texto}</span>
                 <div className={[styles.strength, styles.weak].join(' ')}></div>
-                <div className={[styles.strength, geradorSenhacontext.geradorSenha.strength >= 2 && styles.weak].join(' ')}></div>
-                <div className={[styles.strength, geradorSenhacontext.geradorSenha.strength >= 3 && styles.medium].join(' ')}></div>
-                <div className={[styles.strength, geradorSenhacontext.geradorSenha.strength === 4 && styles.strong].join(' ')}></div>
+                <div className={[styles.strength, geradorSenhacontext.geradorSenha.forcaSenha.strength >= 2 && styles.weak].join(' ')}></div>
+                <div className={[styles.strength, geradorSenhacontext.geradorSenha.forcaSenha.strength >= 3 && styles.medium].join(' ')}></div>
+                <div className={[styles.strength, geradorSenhacontext.geradorSenha.forcaSenha.strength === 4 && styles.strong].join(' ')}></div>
             </div>
         </div>
     )
@@ -73,34 +74,58 @@ const gerarListaDeChars = (geradorSenha) => {
 }
 
 const regraParaVerificarAForcaDaSenha = (geradorSenha) => {
-    let strength = 0;
+    let forcaSenha =  {
+        strength: 0,
+        texto: 'FRACO'
+    };
+
     if(geradorSenha.isUppercase){
-        strength += 1;
+        forcaSenha.strength += 1;
     }
 
     if(geradorSenha.isLowercase){
-        strength += 1;
+        forcaSenha.strength += 1;
     }
 
     if(geradorSenha.hasNumbers){
-        strength += 1;
+        forcaSenha.strength += 1;
     }
 
     if(geradorSenha.hasSymbols){
-        strength += 1;
+        forcaSenha.strength += 1;
     }
 
     if(geradorSenha.length < 20) {
-        strength = 1;
+        forcaSenha.strength = 1;
     }
 
-    return strength;
+
+    if(forcaSenha.strength <= 1) {
+        forcaSenha.texto = 'FRACO';
+    }
+
+    if(forcaSenha.strength === 2) {
+        forcaSenha.texto = 'FRACO';
+    }
+
+    if(forcaSenha.strength === 3) {
+        forcaSenha.texto = 'MÉDIO';
+    }
+
+    if(forcaSenha.strength >= 4) {
+        forcaSenha.texto = 'FORTE';
+    }
+
+    return forcaSenha;
 }
 
 const GeradorSenha = () => {
     const inputPasswordContext = useContext(InputPasswordContext);
     const [geradorSenha, setGeradorSenha] = useState({
-        strength: 0,
+        forcaSenha: {
+            strength: 0,
+            texto: 'FRACO'
+        },
         length: CHARACTER_LENGTH_MIN,
         isUppercase: false,
         isLowercase: false,
@@ -108,10 +133,10 @@ const GeradorSenha = () => {
         hasSymbols: false
     });
 
-    const setStrength = (strength) => {
+    const setStrength = (forcaSenha) => {
         setGeradorSenha({
             ...geradorSenha,
-            strength: strength
+            forcaSenha: forcaSenha
         })
     }
 
@@ -158,8 +183,8 @@ const GeradorSenha = () => {
             password += CHARS.substring(numeroAleatorio, numeroAleatorio+1);
         }
         
-        let strength = regraParaVerificarAForcaDaSenha(geradorSenha);
-        setStrength(strength);
+        let forcaSenha = regraParaVerificarAForcaDaSenha(geradorSenha);
+        setStrength(forcaSenha);
         inputPasswordContext.changePassword(password);
     }
 

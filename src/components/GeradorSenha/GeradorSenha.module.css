@@ -73,6 +73,13 @@
     display: flex;
     flex-direction: row;
     height: 17px;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+}
+
+.containerStrength > div span {
+    margin-right: 5px;
 }
 
 .containerStrength > h5 {
