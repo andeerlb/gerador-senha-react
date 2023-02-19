@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27');
+
 .button { 
     width: 100%;
     background: #a4ffaf;
@@ -8,4 +10,5 @@
     font-weight: 700;
     font-size: 12px;
     cursor: pointer;
+    font-family: 'Bebas Neue', cursive;
 }
