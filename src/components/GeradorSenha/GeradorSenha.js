@@ -27,14 +27,34 @@ const CharacterLength = () => {
 }
 
 const ForcaDaSenha = () => {
+    const geradorSenhacontext = useContext(GeradorSenhaContext);
+    let quantidadeDaForca = 0;
+
+    if(geradorSenhacontext.geradorSenha.isUppercase){
+        quantidadeDaForca += 1;
+    }
+
+    if(geradorSenhacontext.geradorSenha.isLowercase){
+        quantidadeDaForca += 1;
+    }
+
+    if(geradorSenhacontext.geradorSenha.hasNumbers){
+        quantidadeDaForca += 1;
+    }
+
+    if(geradorSenhacontext.geradorSenha.hasSymbols){
+        quantidadeDaForca += 1;
+    }
+
+
     return (
         <div className={styles.containerStrength}>
             <h5>STRENGTH</h5>
             <div>
                 <div className={[styles.strength, styles.weak].join(' ')}></div>
-                <div className={[styles.strength, styles.weak].join(' ')}></div>
-                <div className={[styles.strength, styles.medium].join(' ')}></div>
-                <div className={[styles.strength, styles.strong].join(' ')}></div>
+                <div className={[styles.strength, quantidadeDaForca >= 2 && styles.weak].join(' ')}></div>
+                <div className={[styles.strength, quantidadeDaForca >= 3 && styles.medium].join(' ')}></div>
+                <div className={[styles.strength, quantidadeDaForca === 4 && styles.strong].join(' ')}></div>
             </div>
         </div>
     )
