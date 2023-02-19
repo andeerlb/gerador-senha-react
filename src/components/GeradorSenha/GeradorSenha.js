@@ -1,6 +1,4 @@
 import styles from "./GeradorSenha.module.css";
-import { faRuler } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Checkbox from "../Checkbox/Checkbox";
 import Button from "../Button/Button";
 import { useState } from "react";
@@ -18,7 +16,6 @@ const CharacterLength = () => {
             <div>
                 <span>Character Length</span>
                 <span className={`${styles['range-value']}`}> <p>{rangeValue}</p> </span>
-                <FontAwesomeIcon icon={faRuler} />
             </div>
             <input type="range" name="rangeInput" value={rangeValue}  min="0" max="50" onChange={handleRangeValue} />
         </div>

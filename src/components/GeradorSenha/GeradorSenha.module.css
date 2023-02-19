@@ -113,5 +113,4 @@
 .characterLengthContainer > div .range-value{
     display: flex;
     justify-content: flex-end;
-    margin-right: 30px;
 }
