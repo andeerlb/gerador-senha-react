@@ -1,7 +1,8 @@
 import styles from "./GeradorSenha.module.css";
 import Checkbox from "../Checkbox/Checkbox";
 import Button from "../Button/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { InputPasswordContext } from "../../context/InputPasswordContext";
 
 const CharacterLength = () => {
     const [rangeValue, setRangeValue] = useState(0)
@@ -37,6 +38,14 @@ const ForcaDaSenha = () => {
 }
 
 const GeradorSenha = () => {
+    const inputPasswordContext = useContext(InputPasswordContext);
+
+    const gerarSenha = () => {
+        console.log('aqui vai gerar a senha');
+        inputPasswordContext.changePassword("nova senha, time: "+new Date().getTime());
+        console.log(inputPasswordContext);
+    }
+
     return (
         <div className={styles.containerGerador}>
             <div className="m-b-10">
@@ -58,7 +67,7 @@ const GeradorSenha = () => {
                 <ForcaDaSenha />
             </div>
             <div className="m-b-15">
-                <Button />
+                <Button  text="Generate" onClick={gerarSenha}/>
             </div>
         </div>
     )
