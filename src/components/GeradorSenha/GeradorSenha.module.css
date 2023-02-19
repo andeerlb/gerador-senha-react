@@ -57,3 +57,40 @@
     margin-top: -6px;
 }
   
+.containerStrength {
+    width: calc(100% - 40px);
+    height: 40px;
+    background-color: #18171f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    position: relative;
+}
+
+.containerStrength > div {
+    display: flex;
+    flex-direction: row;
+    height: 17px;
+}
+
+.containerStrength > h5 {
+    color: #7f7c8a;
+    font-weight: 700;
+}
+
+.containerStrength > div > .strength {
+    position: relative;
+    width: 5px;
+    height: 100%;
+    background-color: transparent;
+    border: 1px solid #fff;
+    right: 0;
+    margin-left: 5px;
+}
+
+.containerStrength > div > .strengthChecked {
+    background-color: #a4ffaf !important;
+    border: 1px solid #a4ffaf !important;
+}
