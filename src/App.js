@@ -16,7 +16,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App noselect">
       <InputPasswordContext.Provider value={{
         inputPasswordState,
         changePassword
