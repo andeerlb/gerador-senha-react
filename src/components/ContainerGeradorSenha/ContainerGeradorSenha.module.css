@@ -11,3 +11,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+#container .title {
+    color: #797784;
+    position: absolute;
+    top: 0;
+    margin-top: -50px;
+    width: 100%;
+    font-size: 1.3rem;
+}
