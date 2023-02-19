@@ -94,3 +94,14 @@
     background-color: #a4ffaf !important;
     border: 1px solid #a4ffaf !important;
 }
+
+.range-value >  p{
+    color:#a4ffaf;
+    font-weight: 500;
+}
+
+.characterLengthContainer > div .range-value{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
