@@ -99,7 +99,6 @@ const regraParaVerificarAForcaDaSenha = (geradorSenha) => {
         forcaSenha.strength = 1;
     }
 
-
     if(forcaSenha.strength <= 1) {
         forcaSenha.texto = 'FRACO';
     }

@@ -10,16 +10,22 @@ function App() {
   });
 
   const changePassword = (password) => {
+    copy(password);
     setInputPasswordState({
       password: password
-    })
+    });
+  }
+
+  const copy = (text) => {
+    navigator.clipboard.writeText(text);
   }
 
   return (
     <div className="App noselect">
       <InputPasswordContext.Provider value={{
         inputPasswordState,
-        changePassword
+        changePassword,
+        copy
       }}>
         <ContainerGeradorSenha />
       </InputPasswordContext.Provider>
