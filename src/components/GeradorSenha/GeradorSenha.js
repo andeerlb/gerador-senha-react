@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { InputPasswordContext } from "../../context/InputPasswordContext";
 import { GeradorSenhaContext } from "../../context/GeradorSenhaContext";
 
-const CHARACTER_LENGTH_MIN = 1;
+const CHARACTER_LENGTH_MIN = 10;
 const CHARACTER_LENGTH_MAX = 100;
 
 const CharacterLength = () => {
@@ -28,33 +28,15 @@ const CharacterLength = () => {
 
 const ForcaDaSenha = () => {
     const geradorSenhacontext = useContext(GeradorSenhaContext);
-    let quantidadeDaForca = 0;
-
-    if(geradorSenhacontext.geradorSenha.isUppercase){
-        quantidadeDaForca += 1;
-    }
-
-    if(geradorSenhacontext.geradorSenha.isLowercase){
-        quantidadeDaForca += 1;
-    }
-
-    if(geradorSenhacontext.geradorSenha.hasNumbers){
-        quantidadeDaForca += 1;
-    }
-
-    if(geradorSenhacontext.geradorSenha.hasSymbols){
-        quantidadeDaForca += 1;
-    }
-
 
     return (
         <div className={styles.containerStrength}>
             <h5>STRENGTH</h5>
             <div>
                 <div className={[styles.strength, styles.weak].join(' ')}></div>
-                <div className={[styles.strength, quantidadeDaForca >= 2 && styles.weak].join(' ')}></div>
-                <div className={[styles.strength, quantidadeDaForca >= 3 && styles.medium].join(' ')}></div>
-                <div className={[styles.strength, quantidadeDaForca === 4 && styles.strong].join(' ')}></div>
+                <div className={[styles.strength, geradorSenhacontext.geradorSenha.strength >= 2 && styles.weak].join(' ')}></div>
+                <div className={[styles.strength, geradorSenhacontext.geradorSenha.strength >= 3 && styles.medium].join(' ')}></div>
+                <div className={[styles.strength, geradorSenhacontext.geradorSenha.strength === 4 && styles.strong].join(' ')}></div>
             </div>
         </div>
     )
@@ -90,15 +72,48 @@ const gerarListaDeChars = (geradorSenha) => {
     return chars;
 }
 
+const regraParaVerificarAForcaDaSenha = (geradorSenha) => {
+    let strength = 0;
+    if(geradorSenha.isUppercase){
+        strength += 1;
+    }
+
+    if(geradorSenha.isLowercase){
+        strength += 1;
+    }
+
+    if(geradorSenha.hasNumbers){
+        strength += 1;
+    }
+
+    if(geradorSenha.hasSymbols){
+        strength += 1;
+    }
+
+    if(geradorSenha.length < 20) {
+        strength = 1;
+    }
+
+    return strength;
+}
+
 const GeradorSenha = () => {
     const inputPasswordContext = useContext(InputPasswordContext);
     const [geradorSenha, setGeradorSenha] = useState({
+        strength: 0,
         length: CHARACTER_LENGTH_MIN,
         isUppercase: false,
         isLowercase: false,
         hasNumbers: false,
         hasSymbols: false
     });
+
+    const setStrength = (strength) => {
+        setGeradorSenha({
+            ...geradorSenha,
+            strength: strength
+        })
+    }
 
     const setLength = (length = CHARACTER_LENGTH_MAX) => {
         setGeradorSenha({
@@ -142,6 +157,9 @@ const GeradorSenha = () => {
             const numeroAleatorio = Math.floor(Math.random() * CHARS.length);
             password += CHARS.substring(numeroAleatorio, numeroAleatorio+1);
         }
+        
+        let strength = regraParaVerificarAForcaDaSenha(geradorSenha);
+        setStrength(strength);
         inputPasswordContext.changePassword(password);
     }
 
