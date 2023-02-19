@@ -32,7 +32,9 @@ const ForcaDaSenha = () => {
 const GeradorSenha = () => {
     return (
         <div className={styles.containerGerador}>
-            <CharacterLength />
+            <div className="m-b-10">
+                <CharacterLength />
+            </div>
             <div className="m-b-15">
                 <Checkbox id="uppercase" label="Include Uppercase Letters"/>
             </div>
@@ -45,7 +47,9 @@ const GeradorSenha = () => {
             <div className="m-b-15">
                 <Checkbox id="symbols" label="Include Symbols"/>
             </div>
-            <ForcaDaSenha />
+            <div className="m-t-15">
+                <ForcaDaSenha />
+            </div>
         </div>
     )
 }
