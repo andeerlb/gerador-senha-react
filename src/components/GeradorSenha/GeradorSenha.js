@@ -21,10 +21,10 @@ const ForcaDaSenha = () => {
         <div className={styles.containerStrength}>
             <h5>STRENGTH</h5>
             <div>
-                <div className={[styles.strength, styles.strengthChecked].join(' ')}></div>
-                <div className={[styles.strength].join(' ')}></div>
-                <div className={[styles.strength].join(' ')}></div>
-                <div className={[styles.strength].join(' ')}></div>
+                <div className={[styles.strength, styles.weak].join(' ')}></div>
+                <div className={[styles.strength, styles.weak].join(' ')}></div>
+                <div className={[styles.strength, styles.medium].join(' ')}></div>
+                <div className={[styles.strength, styles.strong].join(' ')}></div>
             </div>
         </div>
     )

@@ -90,7 +90,17 @@
     margin-left: 5px;
 }
 
-.containerStrength > div > .strengthChecked {
-    background-color: #a4ffaf !important;
-    border: 1px solid #a4ffaf !important;
+.containerStrength > div > .strong {
+    background-color: #a4ffaf;
+    border: 1px solid #a4ffaf;
+}
+
+.containerStrength > div > .medium {
+    background-color: #ffd35e;
+    border: 1px solid #ffd35e;
+}
+
+.containerStrength > div > .weak {
+    background-color: #ff4545;
+    border: 1px solid #ff4545;
 }
