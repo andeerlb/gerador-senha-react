@@ -22,11 +22,16 @@
     cursor: pointer;
 }
 
+.containerCheckbox > input[type="checkbox"]:checked {
+    background-color: #a4ffaf;
+    border: 1px solid #a4ffaf;
+}
+
 .containerCheckbox > label {
     position: absolute;
     top: 0;
     left: 0;
-    margin-left: 30px;
+    padding-left: 30px;
     margin-top: -3px;
     cursor: pointer;
 }
@@ -43,4 +48,8 @@
 .containerCheckbox > input[type="checkbox"]:checked::before {
     transform: scale(1);
     background-color: #fff;
+}
+
+.containerCheckbox > input[type="checkbox"]:checked::before {
+    background-color: #000;
 }
