@@ -1,7 +1,7 @@
 import styles from "./GeradorSenha.module.css";
 import Checkbox from "../Checkbox/Checkbox";
 import Button from "../Button/Button";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { InputPasswordContext } from "../../context/InputPasswordContext";
 import { GeradorSenhaContext } from "../../context/GeradorSenhaContext";
 
@@ -33,11 +33,11 @@ const ForcaDaSenha = () => {
         <div className={styles.containerStrength}>
             <h5>STRENGTH</h5>
             <div>
-                <span>{geradorSenhacontext.geradorSenha.forcaSenha.texto}</span>
+                <span>{geradorSenhacontext.forcaSenha.texto}</span>
                 <div className={[styles.strength, styles.weak].join(' ')}></div>
-                <div className={[styles.strength, geradorSenhacontext.geradorSenha.forcaSenha.strength >= 2 && styles.weak].join(' ')}></div>
-                <div className={[styles.strength, geradorSenhacontext.geradorSenha.forcaSenha.strength >= 3 && styles.medium].join(' ')}></div>
-                <div className={[styles.strength, geradorSenhacontext.geradorSenha.forcaSenha.strength === 4 && styles.strong].join(' ')}></div>
+                <div className={[styles.strength, geradorSenhacontext.forcaSenha.strength >= 2 && styles.weak].join(' ')}></div>
+                <div className={[styles.strength, geradorSenhacontext.forcaSenha.strength >= 3 && styles.medium].join(' ')}></div>
+                <div className={[styles.strength, geradorSenhacontext.forcaSenha.strength === 4 && styles.strong].join(' ')}></div>
             </div>
         </div>
     )
@@ -120,11 +120,11 @@ const regraParaVerificarAForcaDaSenha = (geradorSenha) => {
 
 const GeradorSenha = () => {
     const inputPasswordContext = useContext(InputPasswordContext);
+    const [forcaSenha, setForcaSenha] = useState({
+        strength: 0,
+        texto: 'FRACO'
+    });
     const [geradorSenha, setGeradorSenha] = useState({
-        forcaSenha: {
-            strength: 0,
-            texto: 'FRACO'
-        },
         length: CHARACTER_LENGTH_MIN,
         isUppercase: false,
         isLowercase: false,
@@ -132,11 +132,12 @@ const GeradorSenha = () => {
         hasSymbols: false
     });
 
+    useEffect(() => {
+        gerarSenha();
+    }, [geradorSenha])
+
     const setStrength = (forcaSenha) => {
-        setGeradorSenha({
-            ...geradorSenha,
-            forcaSenha: forcaSenha
-        })
+        setForcaSenha(forcaSenha)
     }
 
     const setLength = (length = CHARACTER_LENGTH_MAX) => {
@@ -190,6 +191,7 @@ const GeradorSenha = () => {
     return (
         <GeradorSenhaContext.Provider value={{
             geradorSenha,
+            forcaSenha,
             setLength,
             setUppercase,
             setLowercase,
@@ -214,9 +216,6 @@ const GeradorSenha = () => {
                 </div>
                 <div className="m-t-15 m-b-15">
                     <ForcaDaSenha />
-                </div>
-                <div className="m-b-15">
-                    <Button  text="Generate" onClick={gerarSenha}/>
                 </div>
             </div>
         </GeradorSenhaContext.Provider>

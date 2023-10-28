@@ -1,4 +1,4 @@
-import { faCopy } from '@fortawesome/free-solid-svg-icons'
+import { faCopy, faRotate } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from "./InputPassword.module.css";
 import { InputPasswordContext } from '../../context/InputPasswordContext';
@@ -27,6 +27,13 @@ const InputPassword = () => {
 
                     />
                 )}
+            </div>
+            <div className={styles.containerInputPassword}>
+                <input className={styles.inputPassword} placeholder={context.inputPasswordState.placeholder} value={context.inputPasswordState.password} disabled />
+                <div>
+                    <FontAwesomeIcon icon={faCopy} onClick={() => context.copy(context.inputPasswordState.password)} />
+                    <FontAwesomeIcon icon={faRotate} onClick={() => context.copy(context.inputPasswordState.password)} />
+                </div>
             </div>
         </>
     )
