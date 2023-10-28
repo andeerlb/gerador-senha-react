@@ -4,6 +4,7 @@ import ContainerGeradorSenha from './components/ContainerGeradorSenha/ContainerG
 import { InputPasswordContext } from './context/InputPasswordContext';
 
 function App() {
+  const [iscopied, setIscopied] = useState(false);
   const [inputPasswordState, setInputPasswordState] = useState({
     placeholder: "P4$5W0rD!",
     password: ''
@@ -18,14 +19,18 @@ function App() {
 
   const copy = (text) => {
     navigator.clipboard.writeText(text);
+    setIscopied(true);
   }
+
+  console.log(iscopied);
 
   return (
     <div className="App noselect">
       <InputPasswordContext.Provider value={{
         inputPasswordState,
         changePassword,
-        copy
+        copy,
+        iscopied
       }}>
         <ContainerGeradorSenha />
       </InputPasswordContext.Provider>
